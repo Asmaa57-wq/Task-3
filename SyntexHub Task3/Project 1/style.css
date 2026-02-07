@@ -1,0 +1,205 @@
+/* ===============================
+   Global Reset & Base Styling
+   =============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e293b, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #0f172a;
+}
+
+/* ===============================
+   Layout Wrapper
+   =============================== */
+.quiz-wrapper {
+  width: 100%;
+  max-width: 480px;
+}
+
+.quiz-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.6s ease;
+}
+
+/* ===============================
+   Header
+   =============================== */
+.quiz-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+#counter {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ===============================
+   Progress Bar
+   =============================== */
+.progress {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0;
+  background: #2563eb;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* ===============================
+   Question
+   =============================== */
+#question {
+  margin: 26px 0 18px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ===============================
+   Options
+   =============================== */
+#options {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  background: #e5e7eb;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.option:hover {
+  background: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+/* Correct & Wrong States */
+.option.correct {
+  background: #15803d;
+  color: #ffffff;
+  border-color: #15803d;
+}
+
+.option.wrong {
+  background: #b91c1c;
+  color: #ffffff;
+  border-color: #b91c1c;
+}
+
+.option:disabled {
+  cursor: not-allowed;
+  opacity: 0.95;
+}
+
+/* ===============================
+   Result Section
+   =============================== */
+#result {
+  text-align: center;
+  animation: fadeIn 0.6s ease;
+}
+
+.score {
+  font-size: 30px;
+  font-weight: 600;
+  color: #2563eb;
+  margin: 16px 0 6px;
+}
+
+.remark {
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+/* ===============================
+   Buttons
+   =============================== */
+button {
+  padding: 12px 20px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   Utility
+   =============================== */
+.hidden {
+  display: none;
+}
+
+/* ===============================
+   Animations
+   =============================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   Responsive
+   =============================== */
+@media (max-width: 480px) {
+  .quiz-card {
+    padding: 24px;
+  }
+
+  .quiz-header h1 {
+    font-size: 20px;
+  }
+
+  #question {
+    font-size: 16px;
+  }
+}

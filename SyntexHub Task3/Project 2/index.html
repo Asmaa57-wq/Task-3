@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayan Sports Club Carousel</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+</head>
+<body>
+
+<div class="carousel-container">
+    <div class="carousel">
+        <div class="carousel-item" style="background-image: url('https://images.pexels.com/photos/279009/pexels-photo-279009.jpeg?auto=compress&cs=tinysrgb&w=600');">
+            <div class="content"><div class="name">CARDS</div></div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://img.freepik.com/free-photo/3d-rendering-dices_23-2151098980.jpg?w=360');">
+            <div class="content"><div class="name">LUDO</div></div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://media.istockphoto.com/id/1312835994/photo/cricket-bat-and-ball-on-cricket-pitch.jpg?s=612x612&w=0&k=20&c=_gYXUOttB0sJQKsIV65NmFsE72dhzXi4xdh1EfmVBTE=');">
+            <div class="content"><div class="name">CRICKET</div></div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://t3.ftcdn.net/jpg/03/17/72/96/360_F_317729652_qRDHovRXHTxoVrUCbtvY4ce1V8GVzKvf.jpg');">
+            <div class="content"><div class="name">FOOTBALL</div></div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://livedemo00.template-help.com/joomla_53716/images/slider/slide-2.jpg');">
+            <div class="content"><div class="name">CRICKET</div></div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://media.istockphoto.com/id/1178074437/photo/3d-rendering-of-a-basketball-in-the-net-on-a-dark-background.jpg?s=612x612&w=0&k=20&c=wVod1DvQ5pihsHAdLefCjxbfRdejOySNl4czUaqSndw=');">
+            <div class="content"><div class="name">BASKETBALL</div></div>
+        </div>
+    </div>
+
+    <button class="nav prev"><i class="fa-solid fa-angle-left"></i></button>
+    <button class="nav next"><i class="fa-solid fa-angle-right"></i></button>
+</div>
+
+<script>
+const carousel = document.querySelector('.carousel');
+const items = document.querySelectorAll('.carousel-item');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+let currentIndex = 0;
+
+function updateCarousel() {
+    const center = Math.floor(items.length / 2);
+    items.forEach((item, i) => {
+        const offset = i - currentIndex;
+        const scale = i === currentIndex ? 1 : 0.7;
+        const zIndex = i === currentIndex ? 10 : 5;
+        const opacity = i === currentIndex ? 1 : 0.5;
+        item.style.transform = `translateX(${offset * 250}px) scale(${scale})`;
+        item.style.zIndex = zIndex;
+        item.style.opacity = opacity;
+    });
+}
+
+next.addEventListener('click', () => {
+    currentIndex++;
+    if(currentIndex >= items.length) currentIndex = 0;
+    updateCarousel();
+});
+
+prev.addEventListener('click', () => {
+    currentIndex--;
+    if(currentIndex < 0) currentIndex = items.length -1;
+    updateCarousel();
+});
+
+// Auto-slide
+let autoSlide = setInterval(()=> next.click(), 3000);
+
+// Pause on hover
+document.querySelector('.carousel-container').addEventListener('mouseenter', ()=> clearInterval(autoSlide));
+document.querySelector('.carousel-container').addEventListener('mouseleave', ()=> autoSlide = setInterval(()=> next.click(), 3000));
+
+updateCarousel();
+</script>
+
+</body>
+</html>

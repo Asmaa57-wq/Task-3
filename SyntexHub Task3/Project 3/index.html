@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabbed Content Section</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="tab-container">
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="info">Info</button>
+        <button class="tab-btn" data-tab="contact">Contact</button>
+    </div>
+
+    <div class="tab-content active" id="overview">
+        <h3>Overview</h3>
+        <p>This section provides an overview of the project, highlighting key features and functionality in a clear, concise manner.</p>
+    </div>
+
+    <div class="tab-content" id="info">
+        <h3>Info</h3>
+        <p>This tab contains additional information, technical details, and relevant insights for understanding the project in depth.</p>
+    </div>
+
+    <div class="tab-content" id="contact">
+        <h3>Contact</h3>
+        <p>Get in touch with us through email, phone, or social media channels for queries or collaboration opportunities.</p>
+    </div>
+</div>
+
+<script>
+const tabs = document.querySelectorAll('.tab-btn');
+const contents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Show corresponding content
+        const target = tab.dataset.tab;
+        contents.forEach(content => {
+            content.classList.remove('active');
+            if(content.id === target) content.classList.add('active');
+        });
+    });
+});
+</script>
+
+</body>
+</html>
